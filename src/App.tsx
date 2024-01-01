@@ -4,6 +4,9 @@ import Typography from "@mui/material/Typography";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import "./index.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import NoPage from "./NoPage";
+import AudioVisualiser from "./AudioVisualiser";
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -14,7 +17,7 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
   };
 }
 
-function App() {
+function Home() {
   return (
     <Container sx={{ height: "100%", p: "1em" }}>
       <Box sx={{ width: "100%" }}>
@@ -26,28 +29,21 @@ function App() {
         </Typography>
       </Box>
       <Box sx={{ width: "100%" }}>
-        <ImageList
-          sx={{ width: "100%", height: "500px" }}
-          variant="quilted"
-          cols={4}
-          rowHeight={121}
-        >
-          {itemData.map((item) => (
-            <ImageListItem
-              key={item.img}
-              cols={item.cols || 1}
-              rows={item.rows || 1}
-            >
-              <img
-                {...srcset(item.img, 121, item.rows, item.cols)}
-                alt={item.title}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
+        <Link to="/audio-visualiser">Audio Visualiser</Link>
       </Box>
     </Container>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NoPage />} />
+        <Route path="audio-visualiser" element={<AudioVisualiser />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

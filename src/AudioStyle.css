@@ -1,0 +1,30 @@
+.AudioVisualiser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  height: 100%;
+}
+
+#canvas {
+  margin-top: 50px;
+  width: 100%;
+}
+
+#audio {
+  margin-top: 50px;
+}
+
+/* #canvas {
+  position: absolute;
+  top: 0;
+  width: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+/* #audio {
+  width: 50%;
+  margin: 50px auto;
+  display: block;
+} */
